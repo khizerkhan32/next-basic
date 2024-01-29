@@ -1,95 +1,71 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+"use client";
+import { useState } from "react";
+import Link from "next/link";
+import styles from "./page.module.css";
+import { useRouter } from "next/navigation";
+
+const apple = (items) => {
+  alert(items);
+};
 
 export default function Home() {
+  const [newname, setName] = useState("Khizer");
+
+  const cup = () => {
+    alert("are you sure you want to see her name?");
+    setName("Khadija");
+  };
+  const Innercom = () => {
+    return <h1>Inner component</h1>;
+  };
+  const router = useRouter();
+  const navigation = (name) => {
+    router.push(name);
+  };
   return (
     <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
+      <User name="Khizer" />
+      <User name="Komal" />
+      <User name="saima" />
+      <User name="Hassan" />
+      <h1>Home page</h1>
+      <button onClick={() => alert("Hellow Next Js")}>Click Me</button>
+      <h1>Events, function and state</h1>
+      <button onClick={() => apple("Banana")}>
+        Find Out Fruit name inside button
+      </button>
+      <Innercom />
+
+      <h1>change the person {newname}</h1>
+      <button onClick={() => cup()}>find out her name</button>
+      <div>
+        <h1>Basic Routing | making new page</h1>
+        <Link href="./login">Go to Login</Link>
+        <br />
+        <br />
+        <Link href="./about">Go to About</Link>
       </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+      <button onClick={() => router.push("/login")}>Go to Login page</button>
+      <br />
+      <button onClick={() => navigation("/about")}>Go to About page</button>
+      {/* <Link href="./about/aboutcollege">Go to About College</Link>
+      <br />
+      <Link href="./about/aboutschool">Go to About School</Link> */}
+      {/* <button onClick={() => router.push("/login/loginforstudent")}>
+        Login for Student
+      </button>
+      <br />
+      <button onClick={() => navigation("/login/loginforteacher")}>
+        Login for Teachers
+      </button> */}
     </main>
-  )
+  );
 }
+
+const User = (props) => {
+  return (
+    <div>
+      <h1> User name is {props.name}</h1>
+    </div>
+  );
+};

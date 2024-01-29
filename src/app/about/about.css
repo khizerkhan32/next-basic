@@ -1,0 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.login-menu {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100px;
+}
+
+.login-menu li {
+  list-style: none;
+}
+
+.login-menu li a {
+  text-decoration: none;
+}
+.heading {
+  color: rgb(198, 49, 228);
+  text-align: center;
+  margin-top: 20px;
+}
